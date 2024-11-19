@@ -1,0 +1,8 @@
+{
+	"name": "@yair-behar/js-tools",
+	"version": "1.0.0",
+	"exports": {
+		"./*": "./src/*.ts"
+	},
+	"license": "MIT"
+}
