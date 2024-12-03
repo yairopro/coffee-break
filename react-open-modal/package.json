@@ -1,11 +1,11 @@
 {
-	"name": "@yair-behar/react-open-modal",
+	"name": "@coffee-break/react-open-modal",
 	"version": "1.0.0",
 	"main": "./src/index.ts",
 	"license": "MIT",
 	"dependencies": {
-		"@yair-behar/js-tools": "*",
-		"@yair-behar/web": "*",
+		"@coffee-break/toolbox": "*",
+		"@coffee-break/web": "*",
 		"ramda": "^0.30.1"
 	},
 	"peerDependencies": {
