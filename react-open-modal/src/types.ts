@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type UseOpenModal = <T>(render: RenderModal<T>, options?: Partial<OpenModalOptions>) => ModalHandle<T>;
 export type RenderModal<T> = (props: RenderModalProps<T>) => ReactNode;

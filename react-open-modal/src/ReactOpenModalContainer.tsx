@@ -1,8 +1,9 @@
 "use client";
 
-import { Provider, ReactNode, useCallback, useState } from "react";
+import type { Provider, ReactNode } from "react";
+import { useCallback, useState } from "react";
 import { OpenModalContext } from "./open-modal-context";
-import { ModalEntry, RenderModal, Stack, UseOpenModal } from "./types";
+import type { ModalEntry, RenderModal, Stack, UseOpenModal } from "./types";
 import makePromise from "@coffee-break/toolbox/promise/makePromise"
 import append from "ramda/es/append"
 import React from "react";

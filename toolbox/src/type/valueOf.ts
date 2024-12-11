@@ -1,0 +1,1 @@
+export type valueOf<T extends {}> = T[keyof T];
