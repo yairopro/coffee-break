@@ -1,15 +1,16 @@
 import type { ClassValue } from "clsx";
-import { createElement, type ComponentType } from "react";
-import type { withCN } from "../type/withCN";
+import { type ComponentType } from "react";
 import { cn } from "../style/cn";
+import { withEvolution } from "./withEvolution";
 
 export default function withDefaultClassname<P extends { className: string }>(Component: ComponentType<P>, defaultClass: ClassValue) {
-	const ComponentWithDefaultClassname = withEvolution({
-		className(className: ClassValue) {
-			return cn(defaultClass, className);
-		}
-	}, Component);
-
-	ComponentWithDefaultClassname.displayName = Component.displayName + "_withDefaultClassname";
-	return ComponentWithDefaultClassname;
+	return withEvolution<P>(
+		// @ts-expect-error I don't know why
+		{
+			className(className: ClassValue): string {
+				return cn(defaultClass, className);
+			}
+		},
+		Component
+	);
 }

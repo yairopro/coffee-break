@@ -1,6 +1,8 @@
 import type { ComponentType } from "react";
 import { evolve as rEvolve } from "ramda";
-import {fn} from "@coffee-break/toolbox/type/"
+import type { AnyFn, fn } from "@coffee-break/toolbox/type/fn";
+import React from "react";
+
 
 /**
  * Apply an evolution to the props before rendering the component.
@@ -14,15 +16,15 @@ import {fn} from "@coffee-break/toolbox/type/"
  * });
  * ```
  */
-export function withEvolution<TE extends TargetEvolution<TargetProps>, TargetProps extends object>(
-	Component: ComponentType<TargetProps> | string,
-	evolution: TE,
+export function withEvolution<TargetProps extends object, TE extends TargetEvolution<TargetProps> = TargetEvolution<TargetProps>>(
+	evolution: TargetEvolution<TargetProps>,
+	Component: ComponentType<TargetProps>,
 ) {
 	type NewProps = devolveTarget<TE, TargetProps>;
 
 	return function EvolvedComponent(props: NewProps) {
 		const innerProps = evolve(props, evolution) as TargetProps;
-		return <Component { ...innerProps } />;
+		return <Component  {...innerProps} />;
 	};
 }
 
