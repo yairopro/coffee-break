@@ -2,6 +2,7 @@ import type { AnyFn, fn } from "../type/fn";
 
 /**
  * HOF to deduplicate async-functions calls.
+ * TODO cache by params path
  **/
 export default function dedup<F extends AnyFn>(fn: F) {
 	let promise: Promise<unknown> | undefined;
