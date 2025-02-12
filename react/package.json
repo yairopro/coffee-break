@@ -1,8 +1,8 @@
 {
-	"name": "@coffee-break/web",
+	"name": "@coffee-break/react",
 	"version": "1.0.0",
 	"exports": {
-		"./*": ["./src/*.ts", "./src/*.tsx"]
+		"./*": "./src/*.tsx"
 	},
 	"license": "MIT",
 	"peerDependencies": {
@@ -13,10 +13,7 @@
 	},
 	"dependencies": {
 		"@types/ramda": "^0.30.2",
-		"clsx": "^2.1.1",
 		"ramda": "^0.30.1",
-		"@coffee-break/react": "*",
-		"@coffee-break/toolbox": "*",
-		"tailwind-merge": "^2.5.4"
+		"@coffee-break/toolbox": "*"
 	}
 }

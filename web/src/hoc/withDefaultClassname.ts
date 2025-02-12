@@ -1,7 +1,7 @@
 import type { ClassValue } from "clsx";
 import { type ComponentType } from "react";
 import { cn } from "../style/cn";
-import { withEvolution } from "./withEvolution";
+import { withEvolution } from "@coffee-break/react/hoc/withEvolution";
 
 export default function withDefaultClassname<P extends { className: string }>(Component: ComponentType<P>, defaultClass: ClassValue) {
 	return withEvolution<P>(
