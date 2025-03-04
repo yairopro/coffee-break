@@ -1,4 +1,4 @@
-import Hub from "@coffee-break/toolbox/struct/Hub";
+import { notificationPermissionHub } from "./subscribeToNotificationPermission";
 
 export default async function requireNotificationPermission() {
 	if (Notification.permission === "granted") return;
@@ -9,5 +9,3 @@ export default async function requireNotificationPermission() {
 	if (permission != "granted")
 		throw new Error("Notification permision denied");
 }
-
-export const notificationPermissionHub = Hub<NotificationPermission>();
