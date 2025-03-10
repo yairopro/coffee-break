@@ -1,5 +1,5 @@
-export default function forkFn<I extends any[], O>(fn: ((...p: I) => O) | ((...p: I) => Promise<O>), config: ForkConfig<I, O>) {
-	const { success, fail } = config;
+export default function forkFn<I extends any[], O>(fn: ((...p: I) => O) | ((...p: I) => Promise<O>), config?: ForkConfig<I, O>) {
+	const { success, fail } = config ?? {};
 	if (!success && !fail) return fn;
 
 
