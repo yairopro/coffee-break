@@ -36,7 +36,7 @@ function read<const D extends input>(dic: D) {
 		return type.safeParse(serialized).data;
 	}, dic) as unknown;
 }
-const parse = willTryCatch(pipe(JSON.parse, SuperJSON.parse));
+const parse = willTryCatch(SuperJSON.parse);
 
 function write(dic: Record<string, unknown>) {
 	Object.entries(dic)
@@ -49,7 +49,7 @@ function write(dic: Record<string, unknown>) {
 			}
 		});
 }
-const serialize = pipe(SuperJSON.serialize, JSON.stringify);
+const serialize = SuperJSON.stringify;
 
 
 type input = Record<string, ZodType>;
