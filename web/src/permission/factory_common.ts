@@ -1,5 +1,9 @@
 export function factory_common(name: PermissionName) {
 	return {
+		getStatus(){
+			return navigator.permissions.query({ name });
+		},
+		
 		onChange(callback: (_: PermissionStatus) => void) {
 			let unsubscribed = false;
 			let remove: (() => void) | undefined;
