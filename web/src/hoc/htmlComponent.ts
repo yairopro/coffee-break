@@ -1,8 +1,6 @@
-import type { merge } from "@coffee-break/toolbox/type/merge";
-import type { ClassValue } from "clsx";
+import firstUpCase from "@coffee-break/toolbox/text/firstUpCase";
 import { createElement, type ComponentProps, } from "react";
 import { cn } from "../style/cn";
-import firstUpCase from "@coffee-break/toolbox/text/firstUpCase";
 import type { withCN } from "../type/withCN";
 
 /**
