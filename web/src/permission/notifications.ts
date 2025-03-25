@@ -1,6 +1,5 @@
-import { __, andThen, pipe, prop } from "ramda";
+import { __, prop } from "ramda";
 import factory_require from "./factory_require";
-import voidParams from "@coffee-break/toolbox/function/voidParams"
 
 const mapNotificationPermissionState = prop<Record<NotificationPermission, PermissionState>>(__, {
 	default: "prompt",
@@ -11,6 +10,6 @@ const mapNotificationPermissionState = prop<Record<NotificationPermission, Permi
 export const requireNotifications = factory_require({
 	name: "notifications",
 	read: () => mapNotificationPermissionState(Notification.permission),
-	ask: pipe(voidParams(Notification.requestPermission), andThen(mapNotificationPermissionState)),
+	ask: () => Notification.requestPermission().then(mapNotificationPermissionState),
 });
 
