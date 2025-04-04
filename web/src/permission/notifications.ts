@@ -9,7 +9,6 @@ const mapNotificationPermissionState = prop<Record<NotificationPermission, Permi
 
 export const requireNotifications = factory_require({
 	name: "notifications",
-	read: () => mapNotificationPermissionState(Notification.permission),
 	ask: () => Notification.requestPermission().then(mapNotificationPermissionState),
 });
 
