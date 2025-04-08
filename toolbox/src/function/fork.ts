@@ -1,6 +1,6 @@
-export function fork<I>(fn: (input: I) => void) {
-	return function forked(input: I) {
-		fn(input);
-		return input;
+export function fork<P extends any[]>(fn: (...p: P) => void) {
+	return function forked(...params: P) {
+		fn(...params);
+		return params[0];
 	}
 }
