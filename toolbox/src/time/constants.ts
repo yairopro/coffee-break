@@ -1,4 +1,4 @@
-export const MS_SECOND = 1000;
-export const MS_MINUTE = 60 * MS_SECOND;
-export const MS_HOUR = 60 * MS_MINUTE;
-export const MS_DAY = 24 * MS_HOUR;
+export const SECOND_MS = 1000;
+export const MINUTE_MS = 60 * SECOND_MS;
+export const HOUR_MS = 60 * MINUTE_MS;
+export const DAY_MS = 24 * HOUR_MS;
