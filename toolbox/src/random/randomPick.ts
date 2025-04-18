@@ -1,4 +1,4 @@
-export function randomPick<T>(array: T[]): T | undefined {
+export function randomPick<T>(array: readonly T[]): T | undefined {
 	const { length } = array;
 	if (!length) return;
 
