@@ -1,3 +1,3 @@
-export type required<T extends {}> = {
-	[key in keyof T]-?: T[key] & {}
+export type required<T extends {}, K extends keyof T = keyof T> = T & {
+	[key in K]-?: T[key] & {}
 };
