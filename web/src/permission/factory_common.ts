@@ -1,9 +1,11 @@
+import { prop } from "ramda";
+
 export function factory_common(name: PermissionName) {
 	return {
-		getStatus(){
-			return navigator.permissions.query({ name });
+		getState() {
+			return navigator.permissions.query({ name }).then(prop("state"));
 		},
-		
+
 		onChange(callback: (_: PermissionStatus) => void) {
 			let unsubscribed = false;
 			let remove: (() => void) | undefined;
