@@ -8,8 +8,15 @@
  * // prettify<O> = {a: string, b: string, c: number}
  * ```
  */
-export type merge<T extends any[]> = T extends [infer A, infer B, ...infer R]
-	? merge<[Omit<A, keyof B> & B, ...R]>
-	: T extends [infer A]
-	? A
+export type merge<T extends any[]> =
+	T extends [infer A, infer B, ...infer R] ? merge<[Omit<A, keyof B> & B, ...R]>
+	: T extends [infer A] ? A
 	: {};
+
+export type cleanFields<T extends {}> = Pick<T, { [k in keyof T]: T[k] extends never ? never : k }[keyof T]>;
+
+type a = cleanFields<{
+	a: never,
+	b: string,
+	c: number
+}>;
