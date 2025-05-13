@@ -7,4 +7,6 @@ const geolocation = Object.assign(geolocationContainer, {
 	watch: watchGeolocation,
 });
 
-export default geolocation;
+export default geolocation as typeof geolocation
+	// listen() won't provide undefined
+	& { listen(callback: (position: GeolocationPosition) => unknown): void; };
