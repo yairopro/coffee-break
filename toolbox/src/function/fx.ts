@@ -1,5 +1,6 @@
 import type { AnyFn } from "../type/fn";
 
+// TODO rename
 export async function runfx<T>(fn: () => T) {
 	await 0;
 	return fn();

@@ -1,24 +1,22 @@
 import willTryCatch from "../error/willTryCatch";
 import type { fn } from "../type/fn";
 
+/**
+ * Hub factory.
+ */
 export default function Hub<T = void>() {
 	type Listener = fn<[T]>;
-	const listeners: Array<Listener> = [];
+	const listeners = new Set<Listener>();
 
 	return {
 		plug(listener: Listener) {
-			const entry = willTryCatch(listener, logError);
-			listeners.push(entry);
-
-			return function unplug() {
-				const index = listeners.indexOf(entry);
-				if (index >= 0)
-					listeners.splice(index, 1);
-			};
+			const notify = willTryCatch(listener, logError);
+			listeners.add(notify);
+			return () => listeners.delete(notify);
 		},
 
 		broadcast(payload: T) {
-			listeners.forEach((listener) => listener(payload));
+			listeners.forEach((notify) => notify(payload));
 		},
 	};
 }
