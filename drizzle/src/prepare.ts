@@ -4,7 +4,7 @@ import { andThen, identity, nth, pipe } from "ramda";
 import type { PlaceholderDic, ValuesDic } from "./types";
 
 // TODO move all params into config object
-export default function prepare<const K extends string[], Q extends Query>(name: string, keys: K, build: BuildQuery<K, Q>, config?: Config) {
+export default function prepareDbQuery<const K extends string[], Q extends Query>(name: string, keys: K, build: BuildQuery<K, Q>, config?: Config) {
 	const placholders = toDictionary3(keys, identity, key => sql.placeholder(key)) as
 		PlaceholderDic<K>;
 
