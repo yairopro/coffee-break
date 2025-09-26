@@ -1,6 +1,6 @@
-export default function isolate(process: () => unknown, recover: (reason: unknown) => unknown = console.warn) {
+export default function isolate<const P extends () => any>(process: P, recover: (reason: unknown) => unknown = console.warn): ReturnType<P> | undefined {
 	try {
-		process();
+		return process();
 	} catch (caught: unknown) {
 		try {
 			recover(caught);
