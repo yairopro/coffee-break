@@ -8,7 +8,7 @@ export default function createRelayBaton<T>(name: string) {
 
 	function getBaton() {
 		// @ts-expect-error
-		return window[GLOBAL_KEY]?.[name] as T | undefined;
+		return globalThis.window?.[GLOBAL_KEY]?.[name] as T | undefined;
 	}
 
 	return [Baton, getBaton] as const;
