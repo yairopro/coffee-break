@@ -1,0 +1,20 @@
+{
+	"name": "@coffee-break/nextjs",
+	"version": "1.0.0",
+	"exports": {
+		"./*": "./src/*.tsx"
+	},
+	"license": "MIT",
+	"peerDependencies": {
+		"react": "^18.3.1"
+	},
+	"devDependencies": {
+		"@types/react": "^18.3.12"
+	},
+	"dependencies": {
+		"@types/ramda": "^0.30.2",
+		"ramda": "^0.30.1",
+		"@coffee-break/toolbox": "*",
+		"@coffee-break/react": "*"
+	}
+}
