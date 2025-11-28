@@ -12,7 +12,7 @@ export default function assert(who: string, mustBeTruthy: unknown, errorParam: u
 		catch {
 			console.error(`${who}:> ${error.message}`);
 		}
-		
+
 		throw error;
 	}
 }
