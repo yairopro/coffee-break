@@ -23,5 +23,7 @@
 			"dom.iterable"
 		],
 		"jsx": "react"
-	}
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }

@@ -16,5 +16,7 @@
 		/* If NOT transpiling with TypeScript: */
 		"module": "preserve",
 		"noEmit": true,
-	}
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }

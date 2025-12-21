@@ -14,9 +14,3 @@ export type merge<T extends any[]> =
 	: {};
 
 export type cleanFields<T extends {}> = Pick<T, { [k in keyof T]: T[k] extends never ? never : k }[keyof T]>;
-
-type a = cleanFields<{
-	a: never,
-	b: string,
-	c: number
-}>;
