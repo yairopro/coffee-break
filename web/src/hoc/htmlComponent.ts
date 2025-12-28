@@ -1,5 +1,5 @@
 import firstUpCase from "@coffee-break/toolbox/text/firstUpCase";
-import { createElement, type ComponentProps, } from "react";
+import { createElement, type ComponentProps, type JSX, } from "react";
 import { cn } from "../style/cn";
 import type { withCN } from "../type/withCN";
 
