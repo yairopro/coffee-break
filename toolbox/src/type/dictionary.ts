@@ -1,4 +1,4 @@
-export type dictionary<T = any, K extends Key = Key> = {
+export type dictionary<T = any, K extends Key = string> = {
 	[k in K]+?: T;
 };
 

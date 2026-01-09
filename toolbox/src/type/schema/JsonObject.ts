@@ -1,6 +1,7 @@
 import z from "zod";
 
-export const JsonObject = z.string()
+export const JSObject = z.looseObject({});
+export const JSONObject = z.string()
 	.pipe(z.preprocess((input, ctx) => {
 		try {
 			return JSON.parse(input);
@@ -11,4 +12,4 @@ export const JsonObject = z.string()
 			});
 			return z.NEVER;
 		}
-	}, z.looseObject({})))
+	}, JSObject));
