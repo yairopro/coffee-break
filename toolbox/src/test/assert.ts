@@ -6,11 +6,13 @@ export default function assert(who: string, mustBeTruthy: unknown, errorParam: u
 			: errorParam instanceof Error ? errorParam
 				: new Error(String(errorParam));
 
+		const message = `${who}\n${error.message}`;
+
 		try {
-			error.message = `${who}:> ${error.message}`;
+			error.message = message;
 		}
 		catch {
-			console.error(`${who}:> ${error.message}`);
+			console.error(message);
 		}
 
 		throw error;

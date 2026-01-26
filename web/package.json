@@ -2,10 +2,7 @@
 	"name": "@coffee-break/web",
 	"version": "1.0.0",
 	"exports": {
-		"./*": [
-			"./src/*.ts",
-			"./src/*.tsx"
-		]
+		"./*": "./src/*.tsx"
 	},
 	"license": "MIT",
 	"peerDependencies": {
