@@ -1,37 +1,45 @@
 import assert from "@coffee-break/toolbox/test/assert";
-import type { dictionary } from "@coffee-break/toolbox/type/dictionary";
 import type { ZodType } from "zod";
+import { isWindow } from "../sides";
 
-export default function Courier<T>(name: string, schema?: ZodType<T>): Courier<T> {
+export default function Courier<T>(name: string, schema?: ZodType<T>) {
+	let pickedData: T | undefined;
 	return {
-		pack(data: T) {
-			const serialized = JSON.stringify(data);
-			return `globalThis["${COURIER_VAULT}"] ??= {}; globalThis["${COURIER_VAULT}"]["${name}"] = ${serialized};`
+		pack: {
+			meta(data: T) {
+				return { [`${COURIER_VAULT}.${name}`]: JSON.stringify(data) };
+			},
+
+			script(data: T) {
+				const serialized = JSON.stringify(data);
+				return `globalThis["${COURIER_VAULT}"] ??= {}; globalThis["${COURIER_VAULT}"]["${name}"] = ${serialized};`
+			},
 		},
 
 		pickup() {
-			const vault = requireVault();
-			assert("relay-baton/core#getBaton()", name in vault, `No "${name}" has been set in the vault. You must set the generated script by the component RelatBatonScript or by injecting yourself`)
-
-			const stored = vault[name];
-			if (schema)
-				return schema.parse(stored);
-
-			return vault[name] as T;
+			if (!pickedData) {
+				const found = pickFromVault() ?? pickFromHeaders();
+				pickedData = schema?.parse(found) ?? (found as T);
+			}
+			assert("Courier.pickup()", pickedData, `No "${name}" has been set in the vault/header. You must inject Courrier.pack or script in the DOM`);
+			return pickedData;
 		},
 	};
-}
-
-export type Courier<T> = {
-	pack(data: T): string;
-	pickup(): T,
-}
 
 
-const COURIER_VAULT = "__COURIER_VAULT"
-function requireVault() {
-	const host: dictionary<unknown> = globalThis;
-	const vault = host[COURIER_VAULT];
-	assert("relay-baton/core#requireVault()", vault, "Global vault is not defined. You must set the generated script by the component RelatBatonScript or by injecting yourself");
-	return vault as dictionary<unknown>;
+	function pickFromVault(): unknown {
+		// @ts-expect-error
+		return globalThis[COURIER_VAULT]?.[name];
+	}
+	function pickFromHeaders(): unknown {
+		if (isWindow) {
+			const meta = globalThis?.document.querySelector(`meta[name="${COURIER_VAULT}.${name}"]`);
+			const content = meta?.getAttribute("content");
+			if (content)
+				return JSON.parse(content);
+		}
+	}
 }
+
+
+const COURIER_VAULT = "COURIER_VAULT"
