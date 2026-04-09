@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@coffee-break/react": "*",
 		"@coffee-break/toolbox": "*",
-		"@types/ramda": "^0.30.2",
+		"@types/ramda": "^0.31.1",
 		"clsx": "^2.1.1",
 		"ramda": "0.32.0",
 		"superjson": "^2.2.2",

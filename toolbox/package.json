@@ -12,6 +12,6 @@
 		"zod": "4"
 	},
 	"devDependencies": {
-		"@types/ramda": "^0.30.2"
+		"@types/ramda": "^0.31.1"
 	}
 }
