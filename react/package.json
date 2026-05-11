@@ -9,8 +9,9 @@
 		"react": "19"
 	},
 	"dependencies": {
+		"@coffee-break/toolbox": "*",
 		"@types/ramda": "^0.31.1",
 		"ramda": "0.32.0",
-		"@coffee-break/toolbox": "*"
+		"zustand": "^5.0.13"
 	}
 }
